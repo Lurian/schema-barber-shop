@@ -1,0 +1,470 @@
+{
+  "name": "client",
+  "root": "page",
+  "metadata": {
+    "title": {
+      "default": "Clients"
+    },
+    "description": "Pick a client, see their bookings, and add one."
+  },
+  "styles": {
+    "Container": {
+      "page": ["mx-auto", "flex", "w-full", "max-w-2xl", "flex-col", "gap-6", "px-6", "py-12", "text-neutral-900"],
+      "row": ["flex", "w-full", "items-center", "justify-between", "gap-4", "px-4", "py-3", "text-sm"],
+      "stack": ["flex", "flex-col"],
+      "actions": ["flex", "items-center", "gap-2"],
+      "drawer-header": ["flex", "items-center", "justify-between", "gap-4"]
+    },
+    "Text": {
+      "title": ["text-3xl", "font-semibold", "text-neutral-900"],
+      "heading": ["text-lg", "font-semibold", "text-neutral-900"],
+      "body": ["text-sm", "text-neutral-600"]
+    },
+    "ClientName": {
+      "base": ["font-medium", "text-neutral-900"]
+    },
+    "BarberName": {
+      "base": ["font-medium", "text-neutral-900"]
+    },
+    "BookingLabel": {
+      "base": ["flex", "items-baseline", "gap-1"]
+    },
+    "BookingTime": {
+      "base": ["text-neutral-500"]
+    },
+    "CancelButton": {
+      "base": [
+        "rounded-md",
+        "border",
+        "border-neutral-200",
+        "px-3",
+        "py-1",
+        "text-neutral-700",
+        "hover:border-neutral-400"
+      ]
+    },
+    "BookingList": {
+      "base": [
+        "divide-y",
+        "divide-neutral-200",
+        "rounded-md",
+        "border",
+        "border-neutral-200",
+        "data-ui-booking-list-empty:border-0",
+        "data-ui-booking-list-empty:text-sm",
+        "data-ui-booking-list-empty:text-neutral-500"
+      ]
+    },
+    "ClientPicker": {
+      "base": [
+        "flex",
+        "flex-col",
+        "gap-2",
+        "**:data-ui-client-picker-legend:text-sm",
+        "**:data-ui-client-picker-legend:font-medium",
+        "**:data-ui-client-picker-legend:text-neutral-800",
+        "**:data-ui-client-picker-list:flex",
+        "**:data-ui-client-picker-list:flex-col",
+        "**:data-ui-client-picker-list:gap-2",
+        "**:data-ui-client-picker-option:flex",
+        "**:data-ui-client-picker-option:w-full",
+        "**:data-ui-client-picker-option:items-center",
+        "**:data-ui-client-picker-option:justify-between",
+        "**:data-ui-client-picker-option:rounded-md",
+        "**:data-ui-client-picker-option:border",
+        "**:data-ui-client-picker-option:border-neutral-200",
+        "**:data-ui-client-picker-option:px-4",
+        "**:data-ui-client-picker-option:py-3",
+        "**:data-ui-client-picker-option:text-left",
+        "**:data-ui-client-picker-option:text-sm",
+        "**:data-ui-client-picker-option:hover:border-neutral-400",
+        "**:data-ui-client-picker-option:aria-pressed:border-neutral-900",
+        "**:data-ui-client-picker-option:aria-pressed:bg-neutral-50",
+        "**:data-ui-client-picker-option-label:font-medium",
+        "**:data-ui-client-picker-option-label:text-neutral-900",
+        "**:data-ui-client-picker-option-detail:text-neutral-500"
+      ]
+    },
+    "BookingBarber": {
+      "base": [
+        "flex",
+        "flex-col",
+        "gap-2",
+        "**:data-ui-booking-barber-legend:text-sm",
+        "**:data-ui-booking-barber-legend:font-medium",
+        "**:data-ui-booking-barber-legend:text-neutral-800",
+        "**:data-ui-booking-barber-list:flex",
+        "**:data-ui-booking-barber-list:flex-col",
+        "**:data-ui-booking-barber-list:gap-2",
+        "**:data-ui-booking-barber-option:flex",
+        "**:data-ui-booking-barber-option:w-full",
+        "**:data-ui-booking-barber-option:items-center",
+        "**:data-ui-booking-barber-option:justify-between",
+        "**:data-ui-booking-barber-option:rounded-md",
+        "**:data-ui-booking-barber-option:border",
+        "**:data-ui-booking-barber-option:border-neutral-200",
+        "**:data-ui-booking-barber-option:px-4",
+        "**:data-ui-booking-barber-option:py-3",
+        "**:data-ui-booking-barber-option:text-left",
+        "**:data-ui-booking-barber-option:text-sm",
+        "**:data-ui-booking-barber-option:hover:border-neutral-400",
+        "**:data-ui-booking-barber-option:aria-pressed:border-neutral-900",
+        "**:data-ui-booking-barber-option:aria-pressed:bg-neutral-50",
+        "**:data-ui-booking-barber-option-label:font-medium",
+        "**:data-ui-booking-barber-option-label:text-neutral-900"
+      ]
+    },
+    "BookingClient": {
+      "base": ["text-sm", "text-neutral-600"]
+    },
+    "BookingDate": {
+      "base": [
+        "flex",
+        "flex-col",
+        "gap-1",
+        "**:data-ui-booking-date-label:text-sm",
+        "**:data-ui-booking-date-label:font-medium",
+        "**:data-ui-booking-date-label:text-neutral-800",
+        "**:data-ui-booking-date-input:w-full",
+        "**:data-ui-booking-date-input:rounded-md",
+        "**:data-ui-booking-date-input:border",
+        "**:data-ui-booking-date-input:border-neutral-300",
+        "**:data-ui-booking-date-input:px-3",
+        "**:data-ui-booking-date-input:py-2",
+        "**:data-ui-booking-date-input:text-sm",
+        "**:data-ui-booking-date-input:text-neutral-900"
+      ]
+    },
+    "BookingSlot": {
+      "base": [
+        "grid",
+        "grid-cols-4",
+        "gap-2",
+        "data-ui-booking-slot-empty:block",
+        "data-ui-booking-slot-empty:text-sm",
+        "data-ui-booking-slot-empty:text-neutral-500",
+        "**:data-ui-booking-slot-option:rounded-md",
+        "**:data-ui-booking-slot-option:border",
+        "**:data-ui-booking-slot-option:border-neutral-200",
+        "**:data-ui-booking-slot-option:px-2",
+        "**:data-ui-booking-slot-option:py-2",
+        "**:data-ui-booking-slot-option:text-sm",
+        "**:data-ui-booking-slot-option:text-neutral-900",
+        "**:data-ui-booking-slot-option:hover:border-neutral-400",
+        "**:data-ui-booking-slot-option:aria-pressed:border-neutral-900",
+        "**:data-ui-booking-slot-option:aria-pressed:bg-neutral-900",
+        "**:data-ui-booking-slot-option:aria-pressed:text-white",
+        "**:data-ui-booking-slot-option:disabled:cursor-not-allowed",
+        "**:data-ui-booking-slot-option:disabled:border-neutral-100",
+        "**:data-ui-booking-slot-option:disabled:text-neutral-300",
+        "**:data-ui-booking-slot-option:disabled:line-through"
+      ]
+    },
+    "ConfirmBooking": {
+      "base": [
+        "flex",
+        "flex-col",
+        "gap-2",
+        "**:data-ui-confirm-booking-error:text-sm",
+        "**:data-ui-confirm-booking-error:text-red-600",
+        "**:data-ui-confirm-booking-control:inline-flex",
+        "**:data-ui-confirm-booking-control:items-center",
+        "**:data-ui-confirm-booking-control:justify-center",
+        "**:data-ui-confirm-booking-control:rounded-md",
+        "**:data-ui-confirm-booking-control:bg-neutral-900",
+        "**:data-ui-confirm-booking-control:px-4",
+        "**:data-ui-confirm-booking-control:py-2",
+        "**:data-ui-confirm-booking-control:text-sm",
+        "**:data-ui-confirm-booking-control:font-medium",
+        "**:data-ui-confirm-booking-control:text-white",
+        "**:data-ui-confirm-booking-control:disabled:cursor-not-allowed",
+        "**:data-ui-confirm-booking-control:disabled:bg-neutral-300"
+      ]
+    },
+    "DrawerTrigger": {
+      "base": ["inline-flex", "items-center", "justify-center", "rounded-md", "text-sm"],
+      "primary": [
+        "bg-neutral-900",
+        "px-4",
+        "py-2",
+        "font-medium",
+        "text-white",
+        "disabled:cursor-not-allowed",
+        "disabled:bg-neutral-300"
+      ],
+      "secondary": ["border", "border-neutral-200", "px-3", "py-1", "text-neutral-700", "hover:border-neutral-400"]
+    },
+    "DrawerBackdrop": {
+      "base": ["fixed", "inset-0", "bg-neutral-900/40"]
+    },
+    "DrawerViewport": {
+      "base": ["fixed", "inset-0", "flex", "justify-end"]
+    },
+    "DrawerPopup": {
+      "base": [
+        "flex",
+        "h-full",
+        "w-full",
+        "max-w-md",
+        "flex-col",
+        "gap-4",
+        "overflow-y-auto",
+        "bg-white",
+        "p-6",
+        "shadow-xl"
+      ]
+    },
+    "DrawerTitle": {
+      "base": ["text-lg", "font-semibold", "text-neutral-900"]
+    },
+    "DrawerClose": {
+      "base": ["text-sm", "text-neutral-500"]
+    }
+  },
+  "elements": {
+    "page": {
+      "type": "ShopRoot",
+      "children": ["layout"]
+    },
+    "layout": {
+      "type": "Container",
+      "children": ["title", "intro", "client"],
+      "style": ["$page"]
+    },
+    "client": {
+      "type": "ClientRoot",
+      "children": ["clients", "bookings-title", "bookings", "add"]
+    },
+    "title": {
+      "type": "Text",
+      "props": {
+        "as": "h1",
+        "children": "Clients"
+      },
+      "style": ["$title"]
+    },
+    "intro": {
+      "type": "Text",
+      "props": {
+        "as": "p",
+        "children": "Select a client to see their haircuts. Add booking opens a panel to choose a barber and a free time."
+      },
+      "style": ["$body"]
+    },
+    "clients": {
+      "type": "ClientPicker"
+    },
+    "bookings-title": {
+      "type": "Text",
+      "props": {
+        "as": "h2",
+        "children": "Bookings"
+      },
+      "style": ["$heading", "mt-2"]
+    },
+    "bookings": {
+      "type": "BookingList",
+      "props": {
+        "emptyText": "This client has no bookings yet."
+      },
+      "children": ["row"]
+    },
+    "row": {
+      "type": "Container",
+      "children": ["row-main", "row-actions"],
+      "style": ["$row"]
+    },
+    "row-main": {
+      "type": "Container",
+      "children": ["row-label", "row-time"],
+      "style": ["$stack"]
+    },
+    "row-label": {
+      "type": "BookingLabel",
+      "children": ["row-client", "row-with", "row-barber"]
+    },
+    "row-client": {
+      "type": "ClientName"
+    },
+    "row-with": {
+      "type": "Text",
+      "props": {
+        "as": "p",
+        "children": "with"
+      },
+      "style": ["$body"]
+    },
+    "row-barber": {
+      "type": "BarberName"
+    },
+    "row-time": {
+      "type": "BookingTime"
+    },
+    "row-actions": {
+      "type": "Container",
+      "children": ["view", "row-cancel"],
+      "style": ["$actions"]
+    },
+    "view": {
+      "type": "Drawer",
+      "children": ["view-trigger", "view-portal"]
+    },
+    "view-trigger": {
+      "type": "DrawerTrigger",
+      "props": {
+        "children": "View"
+      },
+      "style": ["$secondary"]
+    },
+    "view-portal": {
+      "type": "DrawerPortal",
+      "children": ["view-backdrop", "view-viewport"]
+    },
+    "view-viewport": {
+      "type": "DrawerViewport",
+      "children": ["view-popup"]
+    },
+    "view-backdrop": {
+      "type": "DrawerBackdrop"
+    },
+    "view-popup": {
+      "type": "DrawerPopup",
+      "children": ["view-header", "barber-scope"]
+    },
+    "view-header": {
+      "type": "Container",
+      "children": ["view-title", "view-close"],
+      "style": ["$drawer-header"]
+    },
+    "view-title": {
+      "type": "DrawerTitle",
+      "props": {
+        "children": "Barber bookings"
+      }
+    },
+    "view-close": {
+      "type": "DrawerClose",
+      "props": {
+        "children": "Close"
+      }
+    },
+    "barber-scope": {
+      "type": "ScopeBarber",
+      "children": ["barber-bookings"]
+    },
+    "row-cancel": {
+      "type": "CancelButton",
+      "props": {
+        "children": "Cancel"
+      }
+    },
+    "barber-bookings": {
+      "type": "BookingList",
+      "props": {
+        "emptyText": "This barber has no bookings."
+      },
+      "children": ["barber-row"]
+    },
+    "barber-row": {
+      "type": "Container",
+      "children": ["barber-main", "barber-cancel"],
+      "style": ["$row"]
+    },
+    "barber-main": {
+      "type": "Container",
+      "children": ["barber-label", "barber-time"],
+      "style": ["$stack"]
+    },
+    "barber-label": {
+      "type": "BookingLabel",
+      "children": ["barber-client", "barber-with", "barber-name"]
+    },
+    "barber-client": {
+      "type": "ClientName"
+    },
+    "barber-with": {
+      "type": "Text",
+      "props": {
+        "as": "p",
+        "children": "with"
+      },
+      "style": ["$body"]
+    },
+    "barber-name": {
+      "type": "BarberName"
+    },
+    "barber-time": {
+      "type": "BookingTime"
+    },
+    "barber-cancel": {
+      "type": "CancelButton",
+      "props": {
+        "children": "Cancel"
+      }
+    },
+    "add": {
+      "type": "AddBookingDrawer",
+      "children": ["add-trigger", "add-portal"]
+    },
+    "add-trigger": {
+      "type": "DrawerTrigger",
+      "props": {
+        "children": "Add booking"
+      },
+      "style": ["$primary"]
+    },
+    "add-portal": {
+      "type": "DrawerPortal",
+      "children": ["add-backdrop", "add-viewport"]
+    },
+    "add-viewport": {
+      "type": "DrawerViewport",
+      "children": ["add-popup"]
+    },
+    "add-backdrop": {
+      "type": "DrawerBackdrop"
+    },
+    "add-popup": {
+      "type": "DrawerPopup",
+      "children": ["add-header", "who", "barber", "date", "slot", "confirm"]
+    },
+    "add-header": {
+      "type": "Container",
+      "children": ["add-title", "add-close"],
+      "style": ["$drawer-header"]
+    },
+    "add-title": {
+      "type": "DrawerTitle",
+      "props": {
+        "children": "Add booking"
+      }
+    },
+    "add-close": {
+      "type": "DrawerClose",
+      "props": {
+        "children": "Close"
+      }
+    },
+    "who": {
+      "type": "BookingClient"
+    },
+    "barber": {
+      "type": "BookingBarber"
+    },
+    "date": {
+      "type": "BookingDate",
+      "props": {
+        "label": "Date"
+      }
+    },
+    "slot": {
+      "type": "BookingSlot"
+    },
+    "confirm": {
+      "type": "ConfirmBooking",
+      "props": {
+        "children": "Confirm booking"
+      }
+    }
+  }
+}

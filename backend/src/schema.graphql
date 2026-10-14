@@ -1,0 +1,66 @@
+"""
+Times are wall-clock strings with no timezone: dates as `YYYY-MM-DD`, times of day as `HH:MM`,
+and date-times as `YYYY-MM-DDTHH:MM`. A haircut takes one 30-minute slot.
+"""
+type Query {
+  barbers: [Barber!]!
+  barber(id: ID!): Barber
+  clients: [Client!]!
+  client(id: ID!): Client
+  bookings(barberId: ID, clientId: ID): [Booking!]!
+  "Free slot start times for a barber on one date, as `YYYY-MM-DDTHH:MM`."
+  availableSlots(barberId: ID!, date: String!): [String!]!
+}
+
+type Mutation {
+  createBarber(name: String!): Barber!
+  "Replaces the barber's weekly hours."
+  setBarberHours(barberId: ID!, hours: [WorkingHoursInput!]!): Barber!
+  createClient(name: String!, email: String!): Client!
+  bookHaircut(barberId: ID!, clientId: ID!, startsAt: String!): Booking!
+  cancelBooking(id: ID!): Boolean!
+}
+
+type Barber {
+  id: ID!
+  name: String!
+  hours: [WorkingHours!]!
+  bookings: [Booking!]!
+}
+
+type WorkingHours {
+  weekday: Weekday!
+  start: String!
+  end: String!
+}
+
+input WorkingHoursInput {
+  weekday: Weekday!
+  start: String!
+  end: String!
+}
+
+enum Weekday {
+  SUNDAY
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+}
+
+type Client {
+  id: ID!
+  name: String!
+  email: String!
+  bookings: [Booking!]!
+}
+
+type Booking {
+  id: ID!
+  barber: Barber!
+  client: Client!
+  startsAt: String!
+  endsAt: String!
+}

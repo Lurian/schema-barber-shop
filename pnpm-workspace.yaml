@@ -1,0 +1,13 @@
+packages:
+  - components
+  - compiler
+  - backend
+
+# Each generated Next.js app (site/, site-barber/, site-client/) carries its own workspace file
+# and is installed separately. Don't block on a purge prompt or a pre-script install.
+verifyDepsBeforeRun: false
+confirmModulesPurge: false
+strictDepBuilds: false
+allowBuilds:
+  '@apollo/protobufjs': set this to true or false
+  sharp: true

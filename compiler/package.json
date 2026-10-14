@@ -1,0 +1,18 @@
+{
+  "name": "@schema-barber-shop/compiler",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "page-compiler": "./src/cli.ts"
+  },
+  "scripts": {
+    "compile": "node src/cli.ts compile",
+    "test": "node --test 'test/**/*.test.ts'",
+    "coverage": "node --test --experimental-test-coverage 'test/**/*.test.ts'",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.3"
+  }
+}

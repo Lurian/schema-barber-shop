@@ -1,0 +1,20 @@
+{
+  "name": "schema-barber-shop",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "compile": "node compiler/src/cli.ts compile",
+    "serve": "node compiler/src/cli.ts serve",
+    "backend": "pnpm --filter @schema-barber-shop/backend start",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "test": "pnpm --filter @schema-barber-shop/compiler test && pnpm --filter @schema-barber-shop/components test && pnpm --filter @schema-barber-shop/backend test",
+    "coverage": "pnpm --filter @schema-barber-shop/compiler coverage && pnpm --filter @schema-barber-shop/components coverage && pnpm --filter @schema-barber-shop/backend coverage",
+    "typecheck": "pnpm --filter @schema-barber-shop/components --filter @schema-barber-shop/compiler typecheck"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.2"
+  }
+}

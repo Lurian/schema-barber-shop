@@ -1,0 +1,341 @@
+{
+  "Drawer": {
+    "name": "Drawer",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "providesContext": "drawer",
+    "schema": {},
+    "guideline": "Open state for a side panel; renders nothing itself. Compose DrawerTrigger and DrawerPortal in children. It carries no shop state of its own."
+  },
+  "DrawerTrigger": {
+    "name": "DrawerTrigger",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "drawer",
+    "schema": {
+      "children": {
+        "type": "string",
+        "default": "Open"
+      }
+    },
+    "guideline": "The button that opens the enclosing drawer. The children prop is the label. Disabled while the root has nothing to act on."
+  },
+  "DrawerPortal": {
+    "name": "DrawerPortal",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "requiresContext": "drawer",
+    "schema": {},
+    "guideline": "Moves the panel to the end of the document. Put DrawerBackdrop then DrawerViewport in children."
+  },
+  "DrawerBackdrop": {
+    "name": "DrawerBackdrop",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "drawer",
+    "schema": {},
+    "guideline": "The layer behind the panel. Style it with fixed inset-0 and a translucent background."
+  },
+  "DrawerViewport": {
+    "name": "DrawerViewport",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "requiresContext": "drawer",
+    "schema": {},
+    "guideline": "Positions the panel and handles swipe and touch scroll locking. Put DrawerPopup inside it. Style it with fixed inset-0 and flex alignment toward the edge the panel opens from."
+  },
+  "DrawerPopup": {
+    "name": "DrawerPopup",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "requiresContext": "drawer",
+    "schema": {},
+    "guideline": "The panel itself, placed inside DrawerViewport. Children are its contents; put DrawerTitle and DrawerClose first."
+  },
+  "DrawerTitle": {
+    "name": "DrawerTitle",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "drawer",
+    "schema": {
+      "children": {
+        "type": "string",
+        "default": "Details"
+      }
+    },
+    "guideline": "Accessible title of the panel. Place it inside DrawerPopup."
+  },
+  "DrawerClose": {
+    "name": "DrawerClose",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "drawer",
+    "schema": {
+      "children": {
+        "type": "string",
+        "default": "Close"
+      }
+    },
+    "guideline": "Closes the panel. Place it inside DrawerPopup."
+  },
+  "Container": {
+    "name": "Container",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "schema": {},
+    "guideline": "A plain box. Use the style array for layout classes (flex, grid, gap, padding)."
+  },
+  "Text": {
+    "name": "Text",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "schema": {
+      "as": {
+        "type": ["h1", "h2", "h3", "p"],
+        "default": "p"
+      },
+      "children": {
+        "type": "string"
+      }
+    },
+    "guideline": "Headings and paragraphs. The children prop is the text; pick the element with as."
+  },
+  "BookingList": {
+    "name": "BookingList",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "requiresContext": "shop",
+    "schema": {
+      "emptyText": {
+        "type": "string",
+        "default": "No bookings yet."
+      }
+    },
+    "providesContext": "bookingRow",
+    "guideline": "One list, scoped by the nearest root: inside ClientRoot the selected client's bookings, inside BarberRoot the selected barber's, directly under ShopRoot every booking. Children are the row, repeated for each booking, and provide bookingRow. ScopeClient or ScopeBarber inside the row points a nested BookingList at that row's client or barber. Oldest first."
+  },
+  "ClientName": {
+    "name": "ClientName",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "bookingRow",
+    "schema": {},
+    "guideline": "The client on this booking row. Place it inside BookingList."
+  },
+  "BarberName": {
+    "name": "BarberName",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "bookingRow",
+    "schema": {},
+    "guideline": "The barber on this booking row. Place it inside BookingList."
+  },
+  "BookingLabel": {
+    "name": "BookingLabel",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "requiresContext": "bookingRow",
+    "schema": {},
+    "guideline": "A row for the booking's names. Put ClientName and BarberName in children, with any text between them."
+  },
+  "BookingTime": {
+    "name": "BookingTime",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "bookingRow",
+    "schema": {},
+    "guideline": "The date and start–end time of this booking row. Place it inside BookingList."
+  },
+  "ScopeClient": {
+    "name": "ScopeClient",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "requiresContext": "bookingRow",
+    "schema": {},
+    "guideline": "Children see this row's client as the booking scope, so a BookingList inside lists that client's bookings. Place it inside BookingList."
+  },
+  "ScopeBarber": {
+    "name": "ScopeBarber",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "requiresContext": "bookingRow",
+    "schema": {},
+    "guideline": "Children see this row's barber as the booking scope, so a BookingList inside lists that barber's bookings. Place it inside BookingList."
+  },
+  "CancelButton": {
+    "name": "CancelButton",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "bookingRow",
+    "schema": {
+      "children": {
+        "type": "string",
+        "default": "Cancel"
+      }
+    },
+    "guideline": "Cancels this booking row. Place it inside BookingList."
+  },
+  "ShopRoot": {
+    "name": "ShopRoot",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "providesContext": "shop",
+    "schema": {},
+    "guideline": "Holds the mocked shop: barbers, clients, bookings, and the mutations on them. Selection lives in ClientRoot and BarberRoot. The backend is not called."
+  },
+  "ClientRoot": {
+    "name": "ClientRoot",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "requiresContext": "shop",
+    "providesContext": "client",
+    "schema": {},
+    "guideline": "Scopes its children to one client. ClientPicker selects them; BookingList inside shows their bookings; AddBookingDrawer books for them."
+  },
+  "ClientPicker": {
+    "name": "ClientPicker",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "client",
+    "schema": {},
+    "guideline": "Lists clients and selects one for the enclosing ClientRoot."
+  },
+  "AddBookingDrawer": {
+    "name": "AddBookingDrawer",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "requiresContext": "client",
+    "providesContext": ["bookingDraft", "drawer"],
+    "schema": {},
+    "guideline": "A Drawer whose children also share the in-progress booking (barber, date, slot). Compose DrawerTrigger and DrawerPortal in children, with the booking fields inside DrawerPopup. The trigger is disabled until a client is selected."
+  },
+  "BookingClient": {
+    "name": "BookingClient",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "bookingDraft",
+    "schema": {},
+    "guideline": "Names the client the drawer will book for. Place it inside AddBookingDrawer."
+  },
+  "BookingBarber": {
+    "name": "BookingBarber",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "bookingDraft",
+    "schema": {},
+    "guideline": "Chooses the barber for the booking in progress. Place it inside AddBookingDrawer."
+  },
+  "BookingDate": {
+    "name": "BookingDate",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "bookingDraft",
+    "schema": {
+      "label": {
+        "type": "string",
+        "default": "Date"
+      }
+    },
+    "guideline": "Date of the booking in progress. Changing it clears the chosen slot. Place it inside AddBookingDrawer."
+  },
+  "BookingSlot": {
+    "name": "BookingSlot",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "bookingDraft",
+    "schema": {},
+    "guideline": "Free 30-minute slots for the chosen barber and date. Place it inside AddBookingDrawer."
+  },
+  "ConfirmBooking": {
+    "name": "ConfirmBooking",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "bookingDraft",
+    "schema": {
+      "children": {
+        "type": "string",
+        "default": "Confirm booking"
+      }
+    },
+    "guideline": "Books the selected client with the barber and slot chosen in the drawer, the same inputs as bookHaircut. Closes the drawer when the booking is accepted."
+  },
+  "BarberRoot": {
+    "name": "BarberRoot",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "requiresContext": "shop",
+    "providesContext": "barber",
+    "schema": {},
+    "guideline": "Scopes its children to one barber. BarberSelect selects them; BookingList inside shows their bookings; EditHoursDrawer edits their hours."
+  },
+  "BarberSelect": {
+    "name": "BarberSelect",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "barber",
+    "schema": {},
+    "guideline": "Lists barbers and selects one for the enclosing BarberRoot."
+  },
+  "EditHoursDrawer": {
+    "name": "EditHoursDrawer",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": true,
+    "requiresContext": "barber",
+    "providesContext": ["hoursDraft", "drawer"],
+    "schema": {},
+    "guideline": "A Drawer whose children also share the range being added (weekday, start, end). Compose DrawerTrigger and DrawerPortal in children, with the hours fields inside DrawerPopup. The trigger is disabled until a barber is selected."
+  },
+  "HoursBarber": {
+    "name": "HoursBarber",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "hoursDraft",
+    "schema": {},
+    "guideline": "Names the barber whose hours the drawer edits. Place it inside EditHoursDrawer."
+  },
+  "HoursList": {
+    "name": "HoursList",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "hoursDraft",
+    "schema": {},
+    "guideline": "The selected barber's weekly hours, each with a Remove button. Place it inside EditHoursDrawer."
+  },
+  "HoursWeekday": {
+    "name": "HoursWeekday",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "hoursDraft",
+    "schema": {},
+    "guideline": "Weekday of the range being added. Place it inside EditHoursDrawer."
+  },
+  "HoursStart": {
+    "name": "HoursStart",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "hoursDraft",
+    "schema": {},
+    "guideline": "Start time of the range being added. Place it inside EditHoursDrawer."
+  },
+  "HoursEnd": {
+    "name": "HoursEnd",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "hoursDraft",
+    "schema": {},
+    "guideline": "End time of the range being added. Place it inside EditHoursDrawer."
+  },
+  "AddHours": {
+    "name": "AddHours",
+    "importPath": "@schema-barber-shop/components",
+    "acceptsChildren": false,
+    "requiresContext": "hoursDraft",
+    "schema": {
+      "children": {
+        "type": "string",
+        "default": "Add hours"
+      }
+    },
+    "guideline": "Appends the draft range to the selected barber. Rejects reversed or overlapping ranges, like setBarberHours. Place it inside EditHoursDrawer."
+  }
+}

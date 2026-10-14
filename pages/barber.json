@@ -1,0 +1,440 @@
+{
+  "name": "barber",
+  "root": "page",
+  "metadata": {
+    "title": {
+      "default": "Barbers"
+    },
+    "description": "Pick a barber, see their bookings, and edit their hours."
+  },
+  "styles": {
+    "Container": {
+      "page": ["mx-auto", "flex", "w-full", "max-w-2xl", "flex-col", "gap-6", "px-6", "py-12", "text-neutral-900"],
+      "row": ["flex", "w-full", "items-center", "justify-between", "gap-4", "px-4", "py-3", "text-sm"],
+      "stack": ["flex", "flex-col"],
+      "actions": ["flex", "items-center", "gap-2"],
+      "drawer-header": ["flex", "items-center", "justify-between", "gap-4"],
+      "fields": ["flex", "flex-wrap", "items-end", "gap-2"]
+    },
+    "Text": {
+      "title": ["text-3xl", "font-semibold", "text-neutral-900"],
+      "heading": ["text-lg", "font-semibold", "text-neutral-900"],
+      "body": ["text-sm", "text-neutral-600"]
+    },
+    "ClientName": {
+      "base": ["font-medium", "text-neutral-900"]
+    },
+    "BarberName": {
+      "base": ["font-medium", "text-neutral-900"]
+    },
+    "BookingLabel": {
+      "base": ["flex", "items-baseline", "gap-1"]
+    },
+    "BookingTime": {
+      "base": ["text-neutral-500"]
+    },
+    "CancelButton": {
+      "base": [
+        "rounded-md",
+        "border",
+        "border-neutral-200",
+        "px-3",
+        "py-1",
+        "text-neutral-700",
+        "hover:border-neutral-400"
+      ]
+    },
+    "BookingList": {
+      "base": [
+        "divide-y",
+        "divide-neutral-200",
+        "rounded-md",
+        "border",
+        "border-neutral-200",
+        "data-ui-booking-list-empty:border-0",
+        "data-ui-booking-list-empty:text-sm",
+        "data-ui-booking-list-empty:text-neutral-500"
+      ]
+    },
+    "BarberSelect": {
+      "base": [
+        "flex",
+        "flex-col",
+        "gap-2",
+        "**:data-ui-barber-select-legend:text-sm",
+        "**:data-ui-barber-select-legend:font-medium",
+        "**:data-ui-barber-select-legend:text-neutral-800",
+        "**:data-ui-barber-select-list:flex",
+        "**:data-ui-barber-select-list:flex-col",
+        "**:data-ui-barber-select-list:gap-2",
+        "**:data-ui-barber-select-option:flex",
+        "**:data-ui-barber-select-option:w-full",
+        "**:data-ui-barber-select-option:items-center",
+        "**:data-ui-barber-select-option:justify-between",
+        "**:data-ui-barber-select-option:rounded-md",
+        "**:data-ui-barber-select-option:border",
+        "**:data-ui-barber-select-option:border-neutral-200",
+        "**:data-ui-barber-select-option:px-4",
+        "**:data-ui-barber-select-option:py-3",
+        "**:data-ui-barber-select-option:text-left",
+        "**:data-ui-barber-select-option:text-sm",
+        "**:data-ui-barber-select-option:hover:border-neutral-400",
+        "**:data-ui-barber-select-option:aria-pressed:border-neutral-900",
+        "**:data-ui-barber-select-option:aria-pressed:bg-neutral-50",
+        "**:data-ui-barber-select-option-label:font-medium",
+        "**:data-ui-barber-select-option-label:text-neutral-900",
+        "**:data-ui-barber-select-option-detail:text-neutral-500"
+      ]
+    },
+    "HoursBarber": {
+      "base": ["text-sm", "text-neutral-600"]
+    },
+    "HoursList": {
+      "base": [
+        "flex",
+        "flex-col",
+        "gap-2",
+        "data-ui-hours-list-empty:text-sm",
+        "data-ui-hours-list-empty:text-neutral-500",
+        "**:data-ui-hours-list-empty:text-sm",
+        "**:data-ui-hours-list-empty:text-neutral-500",
+        "**:data-ui-hours-list-items:flex",
+        "**:data-ui-hours-list-items:flex-col",
+        "**:data-ui-hours-list-items:gap-1",
+        "**:data-ui-hours-list-items:text-sm",
+        "**:data-ui-hours-list-item:flex",
+        "**:data-ui-hours-list-item:items-center",
+        "**:data-ui-hours-list-item:justify-between",
+        "**:data-ui-hours-list-item:rounded-md",
+        "**:data-ui-hours-list-item:bg-neutral-50",
+        "**:data-ui-hours-list-item:px-3",
+        "**:data-ui-hours-list-item:py-2",
+        "**:data-ui-hours-list-range:text-neutral-900",
+        "**:data-ui-hours-list-weekday:inline-block",
+        "**:data-ui-hours-list-weekday:w-10",
+        "**:data-ui-hours-list-weekday:font-medium",
+        "**:data-ui-hours-list-remove:text-neutral-500",
+        "**:data-ui-hours-list-remove:hover:text-neutral-900",
+        "**:data-ui-hours-list-error:text-sm",
+        "**:data-ui-hours-list-error:text-red-600"
+      ]
+    },
+    "HoursWeekday": {
+      "base": ["rounded-md", "border", "border-neutral-300", "px-2", "py-1", "text-sm", "text-neutral-900"]
+    },
+    "HoursStart": {
+      "base": ["rounded-md", "border", "border-neutral-300", "px-2", "py-1", "text-sm", "text-neutral-900"]
+    },
+    "HoursEnd": {
+      "base": ["rounded-md", "border", "border-neutral-300", "px-2", "py-1", "text-sm", "text-neutral-900"]
+    },
+    "AddHours": {
+      "base": [
+        "flex",
+        "flex-col",
+        "gap-2",
+        "**:data-ui-add-hours-control:rounded-md",
+        "**:data-ui-add-hours-control:border",
+        "**:data-ui-add-hours-control:border-neutral-900",
+        "**:data-ui-add-hours-control:px-3",
+        "**:data-ui-add-hours-control:py-1",
+        "**:data-ui-add-hours-control:text-sm",
+        "**:data-ui-add-hours-control:font-medium",
+        "**:data-ui-add-hours-control:text-neutral-900",
+        "**:data-ui-add-hours-control:hover:bg-neutral-50",
+        "**:data-ui-add-hours-error:text-sm",
+        "**:data-ui-add-hours-error:text-red-600"
+      ]
+    },
+    "DrawerTrigger": {
+      "base": ["inline-flex", "items-center", "justify-center", "rounded-md", "text-sm"],
+      "primary": [
+        "bg-neutral-900",
+        "px-4",
+        "py-2",
+        "font-medium",
+        "text-white",
+        "disabled:cursor-not-allowed",
+        "disabled:bg-neutral-300"
+      ],
+      "secondary": ["border", "border-neutral-200", "px-3", "py-1", "text-neutral-700", "hover:border-neutral-400"]
+    },
+    "DrawerBackdrop": {
+      "base": ["fixed", "inset-0", "bg-neutral-900/40"]
+    },
+    "DrawerViewport": {
+      "base": ["fixed", "inset-0", "flex", "justify-end"]
+    },
+    "DrawerPopup": {
+      "base": [
+        "flex",
+        "h-full",
+        "w-full",
+        "max-w-md",
+        "flex-col",
+        "gap-4",
+        "overflow-y-auto",
+        "bg-white",
+        "p-6",
+        "shadow-xl"
+      ]
+    },
+    "DrawerTitle": {
+      "base": ["text-lg", "font-semibold", "text-neutral-900"]
+    },
+    "DrawerClose": {
+      "base": ["text-sm", "text-neutral-500"]
+    }
+  },
+  "elements": {
+    "page": {
+      "type": "ShopRoot",
+      "children": ["layout"]
+    },
+    "layout": {
+      "type": "Container",
+      "children": ["title", "intro", "barber"],
+      "style": ["$page"]
+    },
+    "barber": {
+      "type": "BarberRoot",
+      "children": ["barbers", "bookings-title", "bookings", "edit"]
+    },
+    "title": {
+      "type": "Text",
+      "props": {
+        "as": "h1",
+        "children": "Barbers"
+      },
+      "style": ["$title"]
+    },
+    "intro": {
+      "type": "Text",
+      "props": {
+        "as": "p",
+        "children": "Select a barber to see who is booked with them. Edit hours opens a panel to change their weekly schedule."
+      },
+      "style": ["$body"]
+    },
+    "barbers": {
+      "type": "BarberSelect"
+    },
+    "bookings-title": {
+      "type": "Text",
+      "props": {
+        "as": "h2",
+        "children": "Bookings"
+      },
+      "style": ["$heading", "mt-2"]
+    },
+    "bookings": {
+      "type": "BookingList",
+      "props": {
+        "emptyText": "This barber has no bookings yet."
+      },
+      "children": ["row"]
+    },
+    "row": {
+      "type": "Container",
+      "children": ["row-main", "row-actions"],
+      "style": ["$row"]
+    },
+    "row-main": {
+      "type": "Container",
+      "children": ["row-label", "row-time"],
+      "style": ["$stack"]
+    },
+    "row-label": {
+      "type": "BookingLabel",
+      "children": ["row-client", "row-with", "row-barber"]
+    },
+    "row-client": {
+      "type": "ClientName"
+    },
+    "row-with": {
+      "type": "Text",
+      "props": {
+        "as": "p",
+        "children": "with"
+      },
+      "style": ["$body"]
+    },
+    "row-barber": {
+      "type": "BarberName"
+    },
+    "row-time": {
+      "type": "BookingTime"
+    },
+    "row-actions": {
+      "type": "Container",
+      "children": ["view", "row-cancel"],
+      "style": ["$actions"]
+    },
+    "view": {
+      "type": "Drawer",
+      "children": ["view-trigger", "view-portal"]
+    },
+    "view-trigger": {
+      "type": "DrawerTrigger",
+      "props": {
+        "children": "View"
+      },
+      "style": ["$secondary"]
+    },
+    "view-portal": {
+      "type": "DrawerPortal",
+      "children": ["view-backdrop", "view-viewport"]
+    },
+    "view-viewport": {
+      "type": "DrawerViewport",
+      "children": ["view-popup"]
+    },
+    "view-backdrop": {
+      "type": "DrawerBackdrop"
+    },
+    "view-popup": {
+      "type": "DrawerPopup",
+      "children": ["view-header", "client-scope"]
+    },
+    "view-header": {
+      "type": "Container",
+      "children": ["view-title", "view-close"],
+      "style": ["$drawer-header"]
+    },
+    "view-title": {
+      "type": "DrawerTitle",
+      "props": {
+        "children": "Client bookings"
+      }
+    },
+    "view-close": {
+      "type": "DrawerClose",
+      "props": {
+        "children": "Close"
+      }
+    },
+    "client-scope": {
+      "type": "ScopeClient",
+      "children": ["client-bookings"]
+    },
+    "row-cancel": {
+      "type": "CancelButton",
+      "props": {
+        "children": "Cancel"
+      }
+    },
+    "client-bookings": {
+      "type": "BookingList",
+      "props": {
+        "emptyText": "This client has no bookings."
+      },
+      "children": ["client-row"]
+    },
+    "client-row": {
+      "type": "Container",
+      "children": ["client-main", "client-cancel"],
+      "style": ["$row"]
+    },
+    "client-main": {
+      "type": "Container",
+      "children": ["client-label", "client-time"],
+      "style": ["$stack"]
+    },
+    "client-label": {
+      "type": "BookingLabel",
+      "children": ["client-name", "client-with", "client-barber"]
+    },
+    "client-name": {
+      "type": "ClientName"
+    },
+    "client-with": {
+      "type": "Text",
+      "props": {
+        "as": "p",
+        "children": "with"
+      },
+      "style": ["$body"]
+    },
+    "client-barber": {
+      "type": "BarberName"
+    },
+    "client-time": {
+      "type": "BookingTime"
+    },
+    "client-cancel": {
+      "type": "CancelButton",
+      "props": {
+        "children": "Cancel"
+      }
+    },
+    "edit": {
+      "type": "EditHoursDrawer",
+      "children": ["edit-trigger", "edit-portal"]
+    },
+    "edit-trigger": {
+      "type": "DrawerTrigger",
+      "props": {
+        "children": "Edit hours"
+      },
+      "style": ["$primary"]
+    },
+    "edit-portal": {
+      "type": "DrawerPortal",
+      "children": ["edit-backdrop", "edit-viewport"]
+    },
+    "edit-viewport": {
+      "type": "DrawerViewport",
+      "children": ["edit-popup"]
+    },
+    "edit-backdrop": {
+      "type": "DrawerBackdrop"
+    },
+    "edit-popup": {
+      "type": "DrawerPopup",
+      "children": ["edit-header", "whose", "ranges", "new-hours"]
+    },
+    "edit-header": {
+      "type": "Container",
+      "children": ["edit-title", "edit-close"],
+      "style": ["$drawer-header"]
+    },
+    "edit-title": {
+      "type": "DrawerTitle",
+      "props": {
+        "children": "Working hours"
+      }
+    },
+    "edit-close": {
+      "type": "DrawerClose",
+      "props": {
+        "children": "Close"
+      }
+    },
+    "whose": {
+      "type": "HoursBarber"
+    },
+    "ranges": {
+      "type": "HoursList"
+    },
+    "new-hours": {
+      "type": "Container",
+      "children": ["weekday", "start", "end", "add-hours"],
+      "style": ["$fields"]
+    },
+    "weekday": {
+      "type": "HoursWeekday"
+    },
+    "start": {
+      "type": "HoursStart"
+    },
+    "end": {
+      "type": "HoursEnd"
+    },
+    "add-hours": {
+      "type": "AddHours",
+      "props": {
+        "children": "Add hours"
+      }
+    }
+  }
+}

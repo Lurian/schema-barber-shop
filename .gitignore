@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+pnpm-lock.yaml
+
+# Generated Next.js app (the compiler writes it from a page document)
+site/
+site-*/
+
+# Build output
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+next-env.d.ts
+target/
+
+# Test and tool output
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+.turbo/
+.cache/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Backend runtime data (recreated from backend/data/seed.json)
+backend/data/store.json
+backend/data/store.json.tmp
+
+# Local environment
+.env
+.env.*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
